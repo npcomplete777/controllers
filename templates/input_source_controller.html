@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Input Source Controller</title>
+    </head>
+    <form>
+    	<ul>
+        	<li>
+            	<label for="name">hostname</label>
+            	<input type="text" name="hostname" placeholder="hostname" id="hostname" value="" />
+        	</li>
+        	<li>
+            	<label for="name">username</label>
+            	<input type="text" name="username" placeholder="username" id="username" value="" />
+        	</li>
+        	<li>
+            	<label for="name">password</label>
+            	<input type="text" name="password" placeholder="password" id="password" value="" />
+        	</li>
+        	<li>
+            	<label for="name">account name</label>
+            	<input type="text" name="account_name" placeholder="account_name" id="account_name" value="" />
+        	</li>
+    	</ul>
+  		<input type="submit" value="Submit" />
+	</form>
+	<form>
+  		hn: <input type="text" name="Enter hostname" id="name" value="" />
+  		un: <input type="text" name="Enter username" id="un" value="" />
+  		pw: <input type="text" name="Enter password" id="hostname" value="" />
+  		textarea: <textarea name="comments" id="comments" cols="25" rows="3"></textarea>
+  		<input type="submit" value="submit" />
+	</form>
+    <body>
+    	<h2>enter login info:</h2>
+    	<h2>source controller</h2>
+    	{% for article in articles %}
+        	<b><a href="{{article.link}}">{{article.title}}</a></b><br />
+        	<i>{{article.published}}</i><br />
+        	<p>{{article.summary}}</p>
+        	<hr />
+    	{% endfor %}
+	</body>
+</html>
