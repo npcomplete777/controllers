@@ -4,6 +4,9 @@ from flask import render_template
 from flask import request
 from flask import render_template_string
 from flask_menu import Menu, register_menu
+from flask.views import View
+from flask_wtf import Form
+from wtforms import TextField, DecimalField, SelectField
 
 class Controller:
     def __init__(self, host='localhost:8090', un='aaron.jacobs', pw='rr4CWs7f', account_name='customer1', https_enabled='f', bus_app_dict=''):
@@ -50,15 +53,16 @@ def tmpl_show_menu():
 	#	print('value: ', value)
     return render_template("home.html")
         
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 @register_menu(app, '.', 'Home')
 def index():
     return tmpl_show_menu()
 
-@app.route('/configure-source-controller')
+@app.route('/configure-source-controller', methods=['GET','POST'])
 @register_menu(app, '.first', 'Configure Source Controller', order=0)
 def configure_source_controller():
     return render_template("input_source_controller.html")
+#result=request.form['fooput']
 
 #Application Model API
 @app.route('/list-all-apps')
@@ -70,6 +74,22 @@ def list_all_apps():
 @register_menu(app, '.third', 'Retrieve All Business Transactions in a Business Application', order=2)
 def metric_snapshot_api_menu():
     return tmpl_show_menu()
+    
+@app.route('/configure-source-controller_2/<user>')
+@register_menu(app, '.second', 'TEST /configure-source-controller_2', order=3)
+def configure_source_controller_2(user=None):
+	user = user or 'Aaron'
+	return render_template("")
+<html>
+	<head>
+	  <title>Flask Framework Cookbook</title>
+
+	</head>
+	  <body>
+		<h1>Hello %s!</h1>
+		<p>Welcome to the world of Flask!</p>
+	  </body>
+</html>''' % user
 
 #########################################################
 
